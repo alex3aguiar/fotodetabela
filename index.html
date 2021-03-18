@@ -32,6 +32,7 @@
             var child = document.createElement('div');
             child.innerHTML = table;
             child = child.firstChild;
+            resultado.innerHTML = ""
             resultado.appendChild(child);
 
 
@@ -58,6 +59,14 @@
                 // do something
             }
 
+
+
+            setInterval(() => {
+                console.log(aovivo.checked);
+                if (aovivo.checked) {
+                    PIP();
+                }
+            }, 500);
         };
     </script>
 </head>
@@ -65,15 +74,16 @@
 <body>
 
     <style>
-        *>*{
-            margin:0;
+        *>* {
+            margin: 0;
             padding: 0;
         }
+
         .pixel {
-            width:10px;
-            height:10px;
+            width: 10px;
+            height: 10px;
         }
-        </style>
+    </style>
     <table border="1" width="900" align="center">
         <tr align="center">
             <td>
@@ -86,10 +96,14 @@
 
         <tr align="center">
             <td colspan="2">
-                <button id="snap" onclick="PIP()">Go to foto de tabela</button>
             </td>
         </tr>
     </table>
+    <div>
+        <button id="snap" onclick="PIP()">Go to foto de tabela</button>
+        <input type="checkbox" id="aovivo" name="aovivo">
+        <label for="aovivo">AO VIVO MEU</label>
+    </div>
     código
     <textarea id="resultTexto" rows="5" cols="33">
 It was a dark and stormy night...
