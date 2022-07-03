@@ -44,7 +44,7 @@ function drawToCanvas() {
         arr[i + 3] = 255;
     }
 
-    const outputCtx2 =  document.getElementById("canvas2").getContext("2d");
+    const outputCtx2 =  document.getElementById("canvas3").getContext("2d");
     outputCtx2.drawImage(video, 0, 0, width, height);
     const pixelData2 = inputCtx.getImageData(0, 0, width, height);
     const arr2 = pixelData2.data;
