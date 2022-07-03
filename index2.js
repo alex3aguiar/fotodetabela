@@ -55,4 +55,3 @@ function drawToCanvas() {
     requestAnimationFrame(drawToCanvas);
 }        
 
-drawToCanvas()
