@@ -52,7 +52,7 @@ function drawToCanvas() {
         const x = i / 4 % (width);
         const y = i / (width * 4);
         const aaaa = (arr2[i + 0] + arr2[i + 1] + arr2[i + 2] ) /3;
-        const a1 = getRandomInt()
+        const a1 = getRandomInt(0,aaaa)
         const a2 = getRandomInt(0,a1)
         arr2[i + 0] = a1;
         arr2[i + 1] = a2;
