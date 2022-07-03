@@ -40,12 +40,13 @@ function drawToCanvas() {
     for (let i = 0; i < arr.length; i += 4) {
         const x = i / 4 % (width);
         const y = i / (width * 4);
-        if (((x > 85 && x < 90) || (x > 210 && x < 215)) && (y > 80)) {
-            arr[i + 0] = 0;
-            arr[i + 1] = 255;
-            arr[i + 2] = 0;
-            arr[i + 3] = 255;
-        }
+        const aaaa = (arr[i + 0] + arr[i + 1] + arr[i + 2] + arr[i + 3]) /4;
+
+        arr[i + 0] = aaaa;
+        arr[i + 1] = aaaa;
+        arr[i + 2] = aaaa;
+        arr[i + 3] = aaaa;
+
     }
 
     // write the manipulated pixel data to the second canvas
