@@ -1,6 +1,6 @@
-const video = document.getElementById("video");
         window.onload = function () {
-            
+            const video = document.getElementById("video");
+
             navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.oGetUserMedia;
 
             if (navigator.getUserMedia) {
@@ -12,7 +12,6 @@ const video = document.getElementById("video");
 
             function handleVideo(stream) {
                 video.srcObject = stream;
-                debugger;
                 video.load();
                 video.play();
             }
