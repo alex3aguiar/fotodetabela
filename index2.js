@@ -45,7 +45,7 @@ function drawToCanvas() {
         arr[i + 0] = aaaa;
         arr[i + 1] = aaaa;
         arr[i + 2] = aaaa;
-        arr[i + 3] = aaaa;
+        arr[i + 3] = 255;
 
     }
 
