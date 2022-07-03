@@ -76,25 +76,26 @@ function getRandomInt(min = 0, max = 255) {
 }
 
 function randomFodase(a, b, c) {
+    const cc = 0;
     const aaaaaaaaaaaaaaa = getRandomInt(0, 5)
     switch (aaaaaaaaaaaaaaa) {
         case 0:
-            return [a, b, c]
+            return [a, b, cc]
             break;
         case 1:
-            return [a, c, b]
+            return [a, cc, b]
             break;
         case 2:
-            return [b, a, c]
+            return [b, a, cc]
             break;
         case 3:
-            return [b, c, a]
+            return [b, cc, a]
             break;
         case 4:
-            return [c, a, b]
+            return [cc, a, b]
             break;
         case 5:
-            return [c, b, a]
+            return [cc, b, a]
             break;
     }
 }
