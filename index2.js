@@ -54,3 +54,5 @@ function drawToCanvas() {
     // recurse to itself for every animation frame
     requestAnimationFrame(drawToCanvas);
 }        
+
+drawToCanvas()
