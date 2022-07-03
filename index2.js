@@ -29,14 +29,14 @@ function drawToCanvas() {
     const inputCtx = document.getElementById("canvas1").getContext("2d");
     inputCtx.drawImage(video, 0, 0, width, height);
 
-    const outputCtx =  document.getElementById("canvas2").getContext("2d");
+    const outputCtx = document.getElementById("canvas2").getContext("2d");
     outputCtx.drawImage(video, 0, 0, width, height);
     const pixelData = inputCtx.getImageData(0, 0, width, height);
     const arr = pixelData.data;
     for (let i = 0; i < arr.length; i += 4) {
         const x = i / 4 % (width);
         const y = i / (width * 4);
-        const aaaa = (arr[i + 0] + arr[i + 1] + arr[i + 2]) /3;
+        const aaaa = (arr[i + 0] + arr[i + 1] + arr[i + 2]) / 3;
 
         arr[i + 0] = aaaa;
         arr[i + 1] = aaaa;
@@ -44,19 +44,20 @@ function drawToCanvas() {
         arr[i + 3] = 255;
     }
 
-    const outputCtx2 =  document.getElementById("canvas3").getContext("2d");
+    const outputCtx2 = document.getElementById("canvas3").getContext("2d");
     outputCtx2.drawImage(video, 0, 0, width, height);
     const pixelData2 = inputCtx.getImageData(0, 0, width, height);
     const arr2 = pixelData2.data;
     for (let i = 0; i < arr2.length; i += 4) {
         const x = i / 4 % (width);
         const y = i / (width * 4);
-        const aaaa = (arr2[i + 0] + arr2[i + 1] + arr2[i + 2] ) /3;
-        const a1 = getRandomInt(0,aaaa)
-        const a2 = getRandomInt(0,a1)
-        arr2[i + 0] = a1;
-        arr2[i + 1] = a2;
-        arr2[i + 2] = 255-a1-a2;
+        const aaaa = (arr2[i + 0] + arr2[i + 1] + arr2[i + 2]) / 3;
+        const a1 = getRandomInt(0, aaaa)
+        const a2 = getRandomInt(0, a1)
+        const [ba,bs,bf] = randomFodase(a1,a2,255 - a1 - a2)
+        arr2[i + 0] = ba
+        arr2[i + 1] = bs
+        arr2[i + 2] = bf
         arr2[i + 3] = 255;
     }
 
@@ -66,10 +67,34 @@ function drawToCanvas() {
 
     // recurse to itself for every animation frame
     requestAnimationFrame(drawToCanvas);
-}        
+}
 
-function getRandomInt(min=0, max=255) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min)) + min;
+function getRandomInt(min = 0, max = 255) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min)) + min;
+}
+
+function randomFodase(a, b, c) {
+    const aaaaaaaaaaaaaaa = getRandomInt(0, 5)
+    switch (aaaaaaaaaaaaaaa) {
+        case 0:
+            return [a, b, c]
+            break;
+        case 1:
+            return [a, c, b]
+            break;
+        case 2:
+            return [b, a, c]
+            break;
+        case 3:
+            return [b, c, a]
+            break;
+        case 4:
+            return [c, a, b]
+            break;
+        case 5:
+            return [c, b, a]
+            break;
+    }
 }
