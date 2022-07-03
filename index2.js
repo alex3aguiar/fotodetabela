@@ -62,6 +62,8 @@ function drawToCanvas() {
 
     // write the manipulated pixel data to the second canvas
     outputCtx.putImageData(pixelData, 0, 0);
+    outputCtx2.putImageData(pixelData2, 0, 0);
+
     // recurse to itself for every animation frame
     requestAnimationFrame(drawToCanvas);
 }        
