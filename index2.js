@@ -49,7 +49,7 @@ function drawToCanvas() {
     const pixelData2 = inputCtx.getImageData(0, 0, width, height);
     const arr2 = pixelData2.data;
     for (let i = 0; i < arr2.length; i += 4 * 50) {
-        for (let z = 0; z < 50; z++) {
+        for (let z = 0; z < 1; z++) {
         const index = z+i       
         const x = index/ 4 % (width);
         const y = index/ (width * 4);
