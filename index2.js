@@ -48,17 +48,21 @@ function drawToCanvas() {
     outputCtx2.drawImage(video, 0, 0, width, height);
     const pixelData2 = inputCtx.getImageData(0, 0, width, height);
     const arr2 = pixelData2.data;
-    for (let i = 0; i < arr2.length; i += 4) {
-        const x = i / 4 % (width);
-        const y = i / (width * 4);
-        const aaaa = (arr2[i + 0] + arr2[i + 1] + arr2[i + 2]) / 3;
+    for (let i = 0; i < arr2.length; i += 4 * 50) {
+        for (let z = 0; z < 50; z++) {
+        const index = z+i       
+        const x = index/ 4 % (width);
+        const y = index/ (width * 4);
+        const aaaa = (arr2[index+ 0] + arr2[index+ 1] + arr2[index+ 2]) / 3;
         const a1 = getRandomInt(0, aaaa)
         const a2 = getRandomInt(0, a1)
         const [ba,bs,bf] = randomFodase(a1,a2,255 - a1 - a2)
-        arr2[i + 0] = ba
-        arr2[i + 1] = bs
-        arr2[i + 2] = bf
-        arr2[i + 3] = 255;
+        arr2[index+ 0] = ba
+        arr2[index+ 1] = bs
+        arr2[index+ 2] = bf
+        arr2[index+ 3] = 255;
+        }
+        
     }
 
     // write the manipulated pixel data to the second canvas
