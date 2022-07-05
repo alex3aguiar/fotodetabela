@@ -12,18 +12,21 @@ function drawToCanvas() {
     outputCtx.drawImage(video, 0, 0, width, height);
     const pixelData = inputCtx.getImageData(0, 0, width, height);
     const arr = pixelData.data;
-    for (let i = 0; i < arr.length; i += 4) {
-        const x = i / 4 % (width);
-        const y = i / (width * 4);
-        const aaaa = (arr[i + 0] + arr[i + 1] + arr[i + 2]) ;
-        const a1 = getRandomInt(0, aaaa)
-        const a2 = getRandomInt(0, a1)
-        const [ba, bs, bf] = randomFodase(a1, a2, 255 - a1 - a2)
-        arr[i + 0] = ba
-        arr[i + 1] = bs
-        arr[i + 2] = bf
-        arr[i + 3] = 255;
-
+    for (let i = 0; i < arr2.length; i += 100) {
+        for (let t = 0; t < 100; t++) {
+            const x = i / 4 % (width);
+            const y = i / (width * 4);
+            const aaaa = (arr2[i + 0] + arr2[i + 1] + arr2[i + 2]) ;
+            const a1 = getRandomInt(0, aaaa)
+            const a2 = getRandomInt(0, a1)
+            const [ba, bs, bf] = randomFodase(a1, a2, 255 - a1 - a2, t)
+            arr2[i + 0] = ba
+            arr2[i + 1] = bs
+            arr2[i + 2] = bf
+            arr2[i + 3] = 255;
+            
+        }
+    
     }
 
     const outputCtx2 = document.getElementById("canvas3").getContext("2d");
@@ -88,10 +91,10 @@ function getRandomInt(min = 0, max = 255) {
     return Math.floor(Math.random() * (max - min)) + min;
 }
 
-function randomFodase(a, b, c) {
+function randomFodase(a, b, c,t) {
     const cc = 0;
     const aaaaaaaaaaaaaaa = getRandomInt(0, 5)
-    switch (aaaaaaaaaaaaaaa) {
+    switch (t % 4) {
         case 0:
             return [a, b, cc]
             break;
@@ -112,3 +115,4 @@ function randomFodase(a, b, c) {
             break;
     }
 }
+
