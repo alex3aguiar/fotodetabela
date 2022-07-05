@@ -12,15 +12,18 @@ function drawToCanvas() {
     outputCtx.drawImage(video, 0, 0, width, height);
     const pixelData = inputCtx.getImageData(0, 0, width, height);
     const arr = pixelData.data;
-    for (let i = 0; i < arr.length; i += 4) {
+    for (let i = 0; i < arr1.length; i += 4) {
         const x = i / 4 % (width);
         const y = i / (width * 4);
-        const aaaa = (arr[i + 0] + arr[i + 1] + arr[i + 2]) / 3;
+        const aaaa = (arr1[i + 0] + arr1[i + 1] + arr1[i + 2]) ;
+        const a1 = getRandomInt(0, aaaa)
+        const a2 = getRandomInt(0, a1)
+        const [ba, bs, bf] = randomFodase(a1, a2, 255 - a1 - a2)
+        arr1[i + 0] = ba
+        arr1[i + 1] = bs
+        arr1[i + 2] = bf
+        arr1[i + 3] = 255;
 
-        arr[i + 0] = aaaa;
-        arr[i + 1] = aaaa;
-        arr[i + 2] = aaaa;
-        arr[i + 3] = 255;
     }
 
     const outputCtx2 = document.getElementById("canvas3").getContext("2d");
