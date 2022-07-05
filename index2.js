@@ -1,29 +1,8 @@
 
 const width = 300;
 const height = 225;
-window.onload = function () {
-    const video = document.getElementById("video");
 
-    navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.oGetUserMedia;
 
-    if (navigator.getUserMedia) {
-        navigator.getUserMedia({
-            video: true
-        },
-            handleVideo, videoError);
-    }
-
-    function handleVideo(stream) {
-        video.srcObject = stream;
-        video.load();
-        video.play();
-    }
-
-    function videoError(e) {
-        // do something
-    }
-
-};
 function drawToCanvas() {
     const video = document.getElementById("video");
     const inputCtx = document.getElementById("canvas1").getContext("2d");
@@ -74,6 +53,31 @@ function drawToCanvas() {
     // recurse to itself for every animation frame
     requestAnimationFrame(drawToCanvas);
 }
+
+window.onload = function () {
+    const video = document.getElementById("video");
+
+    navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.oGetUserMedia;
+
+    if (navigator.getUserMedia) {
+        navigator.getUserMedia({
+            video: true
+        },
+            handleVideo, videoError);
+    }
+
+    function handleVideo(stream) {
+        video.srcObject = stream;
+        video.load();
+        video.play();
+    }
+
+    function videoError(e) {
+        // do something
+    }
+    drawToCanvas()
+
+};
 
 function getRandomInt(min = 0, max = 255) {
     min = Math.ceil(min);
